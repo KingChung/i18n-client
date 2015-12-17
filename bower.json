@@ -1,0 +1,17 @@
+{
+  "name": "i18n-client",
+  "authors": [
+    "King Chung <kingchung@outlook.com>"
+  ],
+  "description": "i18n-client is a client library for i18ngo",
+  "main": "i18n-client.js",
+  "dependencies": {
+      "jquery": ">=1.7"
+  },
+  "moduleType": [],
+  "keywords": [
+    "i18n",
+    "jQuery"
+  ],
+  "license": "MIT"
+}

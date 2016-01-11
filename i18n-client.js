@@ -1,5 +1,5 @@
 /**
- * i18n-client.js v0.1.0
+ * i18n-client.js v0.2.0
  * MIT licensed
  */
 (function(root, factory) {
@@ -102,24 +102,33 @@
         return section[source] || source;
     }
 
+    __proto.compile = function(el) {
+        if(!this.settings.enable) {
+            return el;
+        }
+
+        var $wrapper = $('<div>');
+        $wrapper.append(el);
+        $wrapper.find("[i18n-bind]").each(function() {
+            var that = this;
+            var args = $(this).attr('i18n-bind').split(',');
+            var section = $.trim(args[0]), source = $.trim(args[1] || $(this).text());
+            var translateTo = i18n.translate.call(i18n, section, source);
+            translateTo && $(this).text(translateTo);
+        });
+        return $wrapper.html();
+    }
+
     var i18n = new I18n();
     return {
-        init: function(lang, callback) {
+        init: function(config, callback) {
             return i18n.init.apply(i18n, arguments);
         },
         t: function(section, source) {
             return i18n.translate.apply(i18n, arguments);
         },
-        compile: function(elem) {
-            var $wrapper = $('<div>');
-            $wrapper.append(elem);
-            $wrapper.find("[i18n-bind]").each(function() {
-                var that = this;
-                var args = $(this).attr('i18n-bind').split(',');
-                var translateTo = i18n.translate.apply(i18n, _.map(args, $.trim));
-                translateTo && $(this).text(translateTo);
-            });
-            return $wrapper.html();
+        compile: function(el) {
+            return i18n.compile.apply(i18n, arguments);
         }
     };
 }));

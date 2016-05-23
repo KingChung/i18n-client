@@ -99,7 +99,7 @@
             langLib = this.__globalLib[lang];
         }
         var section = (langLib && langLib[section]) || {};
-        return section[source] || source;
+        return section[source.replace('\'', '\\\'')] || source;
     }
 
     __proto.compile = function(el) {

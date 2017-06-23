@@ -1,5 +1,6 @@
 ---
 title: JavaScript SDK
+tagline: Easily integrate LinkedIn into your web applications
 ---
 
 # JavaScript SDK

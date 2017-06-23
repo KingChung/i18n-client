@@ -10,7 +10,7 @@ TheCN's JavaScript SDK is a convienent way to enable theCN integrations within y
 ### Step1 - Initialize the SDK in your webpage
 In order to use any of the functionality available in the SDK, you simply need to include a short piece of JavaScript in your HTML that will async load the SDK into your pages.
 
-{% highlight javascript %}
+```JavaScript
 (function(g, n) {
     window['CNSDKObject'] = n;
     window[n] = window[n] || function() {
@@ -24,7 +24,7 @@ In order to use any of the functionality available in the SDK, you simply need t
 })('https://v4-sso.thecn.com/js/sdk/cn.js?v1.0.0', 'CNSDK');
 
 CNSDK('init', 'your-app-id');
-{% endhighlight %}
+```
 
 This code will load and initialize the SDK. You must replace the value in your-app-id with the ID of your own CN application.
 
@@ -33,9 +33,9 @@ This code will load and initialize the SDK. You must replace the value in your-a
 Generate a button in your HTML and specified event `click` handler function.
 
 
-{% highlight html %}
+```HTML
 <a href="javascript:;" onclick="signInByCN();">Sign In With CN</a>
-{% endhighlight %}
+```
 
 ### Step3 - Handle authentication & retrieve basic member data
 You can request additional privileges by requiring the user to authorize with method `CNSDK('authorize', function(){...}`. It will present a popup authorization window. If the user authorizes successfully, it will execute the handler `onSuccessAuthorized`.
@@ -45,7 +45,7 @@ You can request additional privileges by requiring the user to authorize with me
 Within the handler function, it's safe to use the SDK's generic API call wrapper, `SDK('api')`, to make a rest API call to fetch the member's basic profile data, completing the Sign In with theCN process.
 
 
-{% highlight javascript %}
+```JavaScript
 CNSDK('authorize', function() {
       CNSDK('api').get('me')
             .result(function(status, data){
@@ -57,4 +57,4 @@ CNSDK('authorize', function() {
                 //throw any error
             });
 });
-{% endhighlight %}
+```

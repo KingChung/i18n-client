@@ -22,7 +22,6 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
 markdown: kramdown
-theme: jekyll-theme-cayman
 gems:
   - jekyll-feed
 defaults:
@@ -30,12 +29,6 @@ defaults:
       path: ""
     values:
       layout: "default"
-      author: "King Chung"
-  - scope:
-      path: "doc"
-      type: "pages" 
-    values:
-      layout: "doc"
       author: "King Chung"
 
 # Exclude from processing.
